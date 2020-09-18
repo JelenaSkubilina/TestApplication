@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models;
 using BusinessLogic.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using WebSite.Models;
 
 namespace WebSite.Controllers
 {
+    [Authorize]
     public class DataController : Controller
     {
         private readonly IWebHostEnvironment hostingEnvironment;

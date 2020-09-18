@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Index";
 }
-
 <h2>Index</h2>
 
 <p>
@@ -21,21 +20,21 @@
     <tbody class="loaded-data" data-page="1" data-loaded-records-count="@Model.Datas.Count()">
         @foreach (var data in Model.Datas)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => data.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => data.Comments)
-                </td>
-                <td>
-                    <img src="@data.DataUrl" style="height:200px;" />
-                    <p>@Html.DisplayFor(modelItem => data.DataUrl)</p>
-                </td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@data.Id">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => data.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => data.Comments)
+            </td>
+            <td>
+                <img src="@data.DataUrl" style="height:200px;" />
+                <p>@Html.DisplayFor(modelItem => data.DataUrl)</p>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@data.Id">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

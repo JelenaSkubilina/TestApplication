@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BusinessLogic.Services
+﻿namespace BusinessLogic.Services
 {
     using Microsoft.EntityFrameworkCore;
     using Models;
     using System.Linq;
-    using System.Threading.Tasks;
 
     public class UserService : BaseService<User>, IUserService
     {
@@ -16,23 +11,16 @@ namespace BusinessLogic.Services
         {
         }
 
-        //public User GetById(int id)
-        //{
-        //    return dataContext.Users.Where(u => u.Id == id).Single();//.Include(u => u.Company).Single();
-        //}
-
-        //public IQueryable<User> GetAllWithRoles()
-        //{
-        //    return dataContext.Users
-        //        .Include(u => u.Roles).ThenInclude(r => r.Role);
-        //      //  .Include(u => u.Company);
-        //}
+        public User GetByEmailPassword(string email, string password)
+        {
+            return dataContext.Users
+                .Include(u => u.Role)
+                .FirstOrDefault(u => u.Email == email && u.Password == password);
+        }
     }
 
     public interface IUserService : IService<User>
     {
-    //    User GetById(int id);
-       // Task<User> GetByEmail(string email);
-     //   IQueryable<User> GetAllWithRoles();
+        User GetByEmailPassword(string email, string password);
     }
 }

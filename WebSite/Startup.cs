@@ -1,6 +1,7 @@
 using AutoMapper;
 using BusinessLogic.Models;
 using BusinessLogic.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,14 @@ namespace WebSite
 
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                    options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                });
+
+
             services.AddControllersWithViews();
 
             AddApplicationServices(services);
@@ -40,8 +49,7 @@ namespace WebSite
         private void AddApplicationServices(IServiceCollection services)
         {
             services.AddScoped<IDataService, DataService>();
-         //   services.AddScoped<IBlobStorageService, BlobStorageService>();
-          //  services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,7 +10,5 @@ namespace WebSite.Models
         [Required(ErrorMessage = "Password required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        public string ReturnUrl { get; set; }
     }
 }
