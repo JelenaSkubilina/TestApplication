@@ -1,0 +1,71 @@
+﻿@model WebSite.Models.DatasViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Comments</th>
+            <th>Data url</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="loaded-data" data-page="1" data-loaded-records-count="@Model.Datas.Count()">
+        @foreach (var data in Model.Datas)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => data.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => data.Comments)
+                </td>
+                <td>
+                    <img src="@data.DataUrl" style="height:200px;" />
+                    <p>@Html.DisplayFor(modelItem => data.DataUrl)</p>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@data.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="loading-bar" class="loading-bar">Load More</div>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            data.main.onReady();
+        });
+    </script>
+    <script type="text/x-handlebars-template" id="data-template">
+        {{#each datas}}
+        <tr>
+            <td>
+                {{title}}
+            </td>
+            <td>
+                {{comments}}
+            </td>
+            <td>
+                <img src="{{dataUrl}}" style="height:200px;" />
+                <p>{{dataUrl}}</p>
+            </td>
+            <td>
+                <a href="/Data/Delete/{{id}}">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+}
+

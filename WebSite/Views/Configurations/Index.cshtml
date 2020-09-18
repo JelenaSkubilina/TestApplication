@@ -1,0 +1,42 @@
+﻿@model WebSite.Models.ConfigurationsViewModel
+
+@{
+    ViewData["Title"] = "Configurations";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.MaxDataSize) Mb</th>
+            <th>@Html.DisplayNameFor(m => m.MaxImgWidth) px</th>
+            <th>@Html.DisplayNameFor(m => m.MaxImgHeight) px</th>
+            <th>@Html.DisplayNameFor(m => m.MinImgWidth) px</th>
+            <th>@Html.DisplayNameFor(m => m.MinImgHeight) px</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(m => m.MaxDataSize)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.MaxImgWidth)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.MaxImgHeight)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.MinImgWidth)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.MinImgHeight)
+            </td>
+            <td>
+                <a asp-action="Edit">Edit</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
