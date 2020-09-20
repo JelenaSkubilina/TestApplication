@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models;
 using BusinessLogic.Services;
+using ImageMagick;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -113,6 +114,8 @@ namespace WebSite.Controllers
             if (!ModelState.IsValid)
                 return View(data);
 
+           // var uploadedFile = 
+
             var newData = new Data()
             {
                 Title = data.Title,
@@ -127,6 +130,28 @@ namespace WebSite.Controllers
 
         private string UploadFile(IFormFile file)
         {
+            if (file.ContentType.Length > 0 && file.ContentType.Contains("image"))
+            {
+                var image = new MagickImage(file.OpenReadStream());
+                if (image.Width < 100 || image.Height < 100)
+                {
+                    //return
+                    }
+
+                if (image.Width > 200 || image.Height > 200)
+                {
+                    var size = new MagickGeometry(200, 200);
+
+                    image.Resize(size);
+
+                    var fileInfo = new FileInfo(file.FileName);
+
+                    image.Write(fileInfo);
+                }
+
+                //await cloudBlockBlob.UploadFromFileAsync(fileInfo.Name);
+                // await cloudBlockBlob.UploadFromFileAsync(ResizeImage(file).FullName);
+            }
             var uploads = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
             bool exists = Directory.Exists(uploads);
 

@@ -1,42 +1,36 @@
-﻿@model WebSite.Models.ConfigurationsViewModel
+﻿@model List<WebSite.Models.ConfigurationListViewModel>
 
 @{
     ViewData["Title"] = "Configurations";
 }
+<h2>Configurations</h2>
 
-<h2>Index</h2>
-
+<p>
+    <a asp-action="Add">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(m => m.MaxDataSize) Mb</th>
-            <th>@Html.DisplayNameFor(m => m.MaxImgWidth) px</th>
-            <th>@Html.DisplayNameFor(m => m.MaxImgHeight) px</th>
-            <th>@Html.DisplayNameFor(m => m.MinImgWidth) px</th>
-            <th>@Html.DisplayNameFor(m => m.MinImgHeight) px</th>
+            <th>Type</th>
+            <th>Value</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                @Html.DisplayFor(m => m.MaxDataSize)
-            </td>
-            <td>
-                @Html.DisplayFor(m => m.MaxImgWidth)
-            </td>
-            <td>
-                @Html.DisplayFor(m => m.MaxImgHeight)
-            </td>
-            <td>
-                @Html.DisplayFor(m => m.MinImgWidth)
-            </td>
-            <td>
-                @Html.DisplayFor(m => m.MinImgHeight)
-            </td>
-            <td>
-                <a asp-action="Edit">Edit</a>
-            </td>
-        </tr>
+        @foreach (var conf in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => conf.ConfigurationType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => conf.Value)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@conf.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@conf.Id">| Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

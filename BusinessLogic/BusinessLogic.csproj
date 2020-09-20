@@ -12,12 +12,8 @@
 
   <ItemGroup>
     <Compile Remove="Class1.cs" />
-    <Compile Remove="Migrations\20200918123108_InitialCreate.cs" />
-    <Compile Remove="Migrations\20200918123108_InitialCreate.Designer.cs" />
-    <Compile Remove="Migrations\20200918123850_AddUsers.cs" />
-    <Compile Remove="Migrations\20200918123850_AddUsers.Designer.cs" />
-    <Compile Remove="Migrations\20200918123959_InitialCreate.cs" />
-    <Compile Remove="Migrations\20200918123959_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200919065533_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200919065533_InitialCreate.Designer.cs" />
     <Compile Remove="Models\Company.cs" />
     <Compile Remove="Models\RoleNames.cs" />
   </ItemGroup>

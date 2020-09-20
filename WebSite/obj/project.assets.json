@@ -8246,19 +8246,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\Samsung\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\TestApplication\\WebSite\\WebSite.csproj",
+      "projectUniqueName": "C:\\Users\\Samsung\\Source\\Repos\\TestApplication\\WebSite\\WebSite.csproj",
       "projectName": "WebSite",
-      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\TestApplication\\WebSite\\WebSite.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\TestApplication\\WebSite\\obj\\",
+      "projectPath": "C:\\Users\\Samsung\\Source\\Repos\\TestApplication\\WebSite\\WebSite.csproj",
+      "packagesPath": "C:\\Users\\Samsung\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Samsung\\Source\\Repos\\TestApplication\\WebSite\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Samsung\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8271,8 +8271,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\Admin\\Documents\\GitHub\\TestApplication\\BusinessLogic\\BusinessLogic.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\TestApplication\\BusinessLogic\\BusinessLogic.csproj"
+            "C:\\Users\\Samsung\\Source\\Repos\\TestApplication\\BusinessLogic\\BusinessLogic.csproj": {
+              "projectPath": "C:\\Users\\Samsung\\Source\\Repos\\TestApplication\\BusinessLogic\\BusinessLogic.csproj"
             }
           }
         }
@@ -8365,7 +8365,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

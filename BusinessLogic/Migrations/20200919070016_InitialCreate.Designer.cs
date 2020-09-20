@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200918124113_Initial-create")]
-    partial class Initialcreate
+    [Migration("20200919070016_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,22 +23,70 @@ namespace BusinessLogic.Migrations
 
             modelBuilder.Entity("BusinessLogic.Models.Configuration", b =>
                 {
-                    b.Property<int>("MaxDataSize")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ConfigurationTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MaxImgHeight")
+                    b.Property<int>("Title")
                         .HasColumnType("int");
 
-                    b.Property<int>("MaxImgWidth")
+                    b.Property<int>("Value")
                         .HasColumnType("int");
 
-                    b.Property<int>("MinImgHeight")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MinImgWidth")
-                        .HasColumnType("int");
+                    b.HasKey("Id");
 
                     b.ToTable("Configurations");
+                });
+
+            modelBuilder.Entity("BusinessLogic.Models.ConfigurationType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ConfigurationTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "MaxDataSize"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Extension"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "MaxImgHeight"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "MaxImgWidth"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "MinImgHeight"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "MinImgWidth"
+                        });
                 });
 
             modelBuilder.Entity("BusinessLogic.Models.Data", b =>

@@ -76,7 +76,27 @@ namespace WebSite.Core.Helpers
                 cloudBlockBlob.Properties.ContentType = file.ContentType;
 
                 if (file.ContentType.Length > 0 && file.ContentType.Contains("image"))
-                    await cloudBlockBlob.UploadFromFileAsync(ResizeImage(file).FullName);
+                {
+                    //var image = new MagickImage(file.OpenReadStream());
+                    //if(image.Width < 100 || image.Height < 100)
+                    //{
+                    //    return 
+                    //}
+
+                    //if (image.Width > 200 || image.Height > 200)
+                    //{
+                    //    var size = new MagickGeometry(200, 200);
+
+                    //    image.Resize(size);
+
+                    //    var fileInfo = new FileInfo(file.FileName);
+
+                    //    image.Write(fileInfo);
+                    //}
+
+                    //await cloudBlockBlob.UploadFromFileAsync(fileInfo.Name);
+                     await cloudBlockBlob.UploadFromFileAsync(ResizeImage(file).FullName);
+                }
                 else
                     await cloudBlockBlob.UploadFromStreamAsync(file.OpenReadStream());
 
@@ -90,14 +110,15 @@ namespace WebSite.Core.Helpers
 
         private FileInfo ResizeImage(IFormFile file)
         {
-            var resizedImage = new MagickImage(file.OpenReadStream());
+            var image = new MagickImage(file.OpenReadStream());
+
             var size = new MagickGeometry(200, 200);
 
-            resizedImage.Resize(size);
+            image.Resize(size);
 
             var fileInfo = new FileInfo(file.FileName);
 
-            resizedImage.Write(fileInfo);
+            image.Write(fileInfo);
 
             return fileInfo;
         }

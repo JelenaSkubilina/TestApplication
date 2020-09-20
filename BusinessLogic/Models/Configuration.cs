@@ -2,14 +2,12 @@
 {
     public class Configuration
     {
-        public int MaxDataSize { get; set; }
+        public int Id { get; set; }
 
-        public int MaxImgWidth { get; set; }
+        public int ConfigurationTypeId { get; set; }
         
-        public int MaxImgHeight { get; set; }
+        public string Value { get; set; }
 
-        public int MinImgHeight { get; set; }
-
-        public int MinImgWidth { get; set; }
+        public ConfigurationType ConfigurationType { get; set; }
     }
 }

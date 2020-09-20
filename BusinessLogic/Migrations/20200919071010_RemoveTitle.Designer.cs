@@ -4,14 +4,16 @@ using BusinessLogic.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BusinessLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200919071010_RemoveTitle")]
+    partial class RemoveTitle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,56 +31,12 @@ namespace BusinessLogic.Migrations
                     b.Property<int>("ConfigurationTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("Configurations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ConfigurationTypeId = 1,
-                            Value = "50"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ConfigurationTypeId = 2,
-                            Value = ".jpeg"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ConfigurationTypeId = 3,
-                            Value = "500"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ConfigurationTypeId = 4,
-                            Value = "500"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ConfigurationTypeId = 5,
-                            Value = "100"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ConfigurationTypeId = 6,
-                            Value = "100"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ConfigurationTypeId = 2,
-                            Value = ".mp4"
-                        });
                 });
 
             modelBuilder.Entity("BusinessLogic.Models.ConfigurationType", b =>

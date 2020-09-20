@@ -2,7 +2,7 @@
 
 namespace BusinessLogic.Migrations
 {
-    public partial class Initialcreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,14 +10,28 @@ namespace BusinessLogic.Migrations
                 name: "Configurations",
                 columns: table => new
                 {
-                    MaxDataSize = table.Column<int>(nullable: false),
-                    MaxImgWidth = table.Column<int>(nullable: false),
-                    MaxImgHeight = table.Column<int>(nullable: false),
-                    MinImgHeight = table.Column<int>(nullable: false),
-                    MinImgWidth = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ConfigurationTypeId = table.Column<int>(nullable: false),
+                    Title = table.Column<int>(nullable: false),
+                    Value = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Configurations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ConfigurationTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConfigurationTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -70,14 +84,26 @@ namespace BusinessLogic.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Roles",
+                table: "ConfigurationTypes",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { 1, "admin" });
+                values: new object[,]
+                {
+                    { 1, "MaxDataSize" },
+                    { 2, "Extension" },
+                    { 3, "MaxImgHeight" },
+                    { 4, "MaxImgWidth" },
+                    { 5, "MinImgHeight" },
+                    { 6, "MinImgWidth" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { 2, "user" });
+                values: new object[,]
+                {
+                    { 1, "admin" },
+                    { 2, "user" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Users",
@@ -99,6 +125,9 @@ namespace BusinessLogic.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Configurations");
+
+            migrationBuilder.DropTable(
+                name: "ConfigurationTypes");
 
             migrationBuilder.DropTable(
                 name: "Datas");
