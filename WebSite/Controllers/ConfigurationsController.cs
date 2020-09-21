@@ -1,7 +1,10 @@
-﻿using BusinessLogic.Models;
+﻿using AutoMapper;
+using BusinessLogic.Models;
 using BusinessLogic.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 using System.Linq;
 using WebSite.Models;
 
@@ -11,17 +14,20 @@ namespace WebSite.Controllers
     public class ConfigurationsController : Controller
     {
         public readonly IConfigurationsService configurationsService;
+        private readonly IConfigurationTypeService configurationTypeService;
 
-        public ConfigurationsController(IConfigurationsService configurationsService)
+        public ConfigurationsController(IConfigurationsService configurationsService,
+            IConfigurationTypeService configurationTypeService)
         {
             this.configurationsService = configurationsService;
+            this.configurationTypeService = configurationTypeService;
         }
 
         public IActionResult Index()
         {
             var configurations = configurationsService.GetAllConfigurations();
 
-            var model = configurations.Select(c => new WebSite.Models.ConfigurationListViewModel()
+            var model = configurations.Select(c => new ConfigurationListViewModel()
             {
                 Id = c.Id,
                 Value = c.Value,
@@ -33,19 +39,9 @@ namespace WebSite.Controllers
         }
 
 
-        public IActionResult Update(Configuration configuration)
+        public IActionResult Edit(int id)
         {
-            var model = configuration;
-
-            configurationsService.UpdateConfigurations(configuration);
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult Update(int id)
-        {
-            var configuration = configurationsService.GetById(id);
+            var configuration = configurationsService.GetConfiguration(id);
 
             if (configuration == null)
                 return NotFound();
@@ -54,19 +50,41 @@ namespace WebSite.Controllers
             {
                 Id = configuration.Id,
                 ConfigurationTypeId = configuration.ConfigurationTypeId,
-                Value = configuration.Value
+                Value = configuration.Value,
+                ConfigurationType = configuration.ConfigurationType.Name
             };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ConfigurationViewModel model)
+        {
+            var configuration = configurationsService.GetById(model.Id);
+
+            if (configuration == null)
+                return NotFound();
+
+            configuration.Value = model.Value;
+            configurationsService.Update(configuration);
 
             return View(model);
         }
 
         public IActionResult Add()
         {
-            //var model = new ConfigurationViewModel()
-            //{
-            //    ConfigurationTypes = configurationsService.getTypes()
-            //};
-            return View();
+            var configurationTypes = configurationTypeService.GetTypes().ToList();
+
+            var model = new ConfigurationViewModel()
+            {
+                ConfigurationTypes = configurationTypes.Select(t => new SelectListItem()
+                {
+                    Text = t.Name,
+                    Value = t.Id.ToString()
+                })
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -79,11 +97,10 @@ namespace WebSite.Controllers
             var newConfiguration = new Configuration()
             {
                 ConfigurationTypeId = model.ConfigurationTypeId,
-                Value = model.Value
-                
+                Value = model.Value           
             };
 
-            configurationsService.Add(newConfiguration);//dobavitj cashe
+            configurationsService.Add(newConfiguration);
 
             return RedirectToAction(nameof(Index));
         }

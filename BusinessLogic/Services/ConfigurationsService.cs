@@ -32,7 +32,7 @@ namespace BusinessLogic.Services
             Configuration configuration = null;
             if (!memoryCache.TryGetValue(id, out configuration))
             {
-                configuration = dataContext.Configurations.FirstOrDefault();
+                configuration = dataContext.Configurations.Include(c => c.ConfigurationType).FirstOrDefault();
                 if (configuration != null)
                 {
                     memoryCache.Set(1, configuration,

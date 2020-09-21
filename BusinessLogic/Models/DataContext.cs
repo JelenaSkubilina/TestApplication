@@ -32,12 +32,12 @@ namespace BusinessLogic.Models
             User adminUser = new User { Id = 1, Email = adminEmail, Password = adminPassword, RoleId = adminRole.Id };
             User user = new User { Id = 2, Email = userEmail, Password = userPassword, RoleId = userRole.Id };
 
-            ConfigurationType maxDataSize = new ConfigurationType { Id = 1, Name = "MaxDataSize" };
+            ConfigurationType maxDataSize = new ConfigurationType { Id = 1, Name = "MaxDataSize (Mb)" };
             ConfigurationType extension = new ConfigurationType { Id = 2, Name = "Extension" };
-            ConfigurationType maxImgHeight = new ConfigurationType { Id = 3, Name = "MaxImgHeight" };
-            ConfigurationType maxImgWidth = new ConfigurationType { Id = 4, Name = "MaxImgWidth" };
-            ConfigurationType minImgHeight = new ConfigurationType { Id = 5, Name = "MinImgHeight" };
-            ConfigurationType minImgWidth = new ConfigurationType { Id = 6, Name = "MinImgWidth" };
+            ConfigurationType maxImgHeight = new ConfigurationType { Id = 3, Name = "MaxImgHeight (px)" };
+            ConfigurationType maxImgWidth = new ConfigurationType { Id = 4, Name = "MaxImgWidth (px)" };
+            ConfigurationType minImgHeight = new ConfigurationType { Id = 5, Name = "MinImgHeight (px)" };
+            ConfigurationType minImgWidth = new ConfigurationType { Id = 6, Name = "MinImgWidth (px)" };
 
             builder.Entity<Configuration>().HasData
                 (new Configuration[]

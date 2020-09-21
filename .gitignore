@@ -3,3 +3,5 @@ BusinessLogic/bin/
 BusinessLogic/obj/
 WebSite/bin/
 WebSite/obj/
+.vs/TestApplication/v16/.suo
+*.cache

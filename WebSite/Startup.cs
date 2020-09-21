@@ -51,6 +51,7 @@ namespace WebSite
             services.AddScoped<IDataService, DataService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IConfigurationsService, ConfigurationsService>();
+            services.AddScoped<IConfigurationTypeService, ConfigurationTypeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
