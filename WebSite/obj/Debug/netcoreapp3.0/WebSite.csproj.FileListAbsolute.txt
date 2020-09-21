@@ -201,3 +201,6 @@ C:\Users\Samsung\Source\Repos\TestApplication\WebSite\obj\Debug\netcoreapp3.0\We
 C:\Users\Samsung\Source\Repos\TestApplication\WebSite\obj\Debug\netcoreapp3.0\Razor\Views\Configurations\Add.cshtml.g.cs
 C:\Users\Samsung\Source\Repos\TestApplication\WebSite\obj\Debug\netcoreapp3.0\Razor\Views\Configurations\Delete.cshtml.g.cs
 C:\Users\Samsung\Source\Repos\TestApplication\WebSite\obj\Debug\netcoreapp3.0\Razor\Views\Configurations\Edit.cshtml.g.cs
+C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\obj\Debug\netcoreapp3.0\Razor\Views\Configurations\Add.cshtml.g.cs
+C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\obj\Debug\netcoreapp3.0\Razor\Views\Configurations\Delete.cshtml.g.cs
+C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\obj\Debug\netcoreapp3.0\Razor\Views\Configurations\Edit.cshtml.g.cs
