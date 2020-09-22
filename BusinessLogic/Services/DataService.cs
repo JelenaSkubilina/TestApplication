@@ -8,11 +8,9 @@ namespace BusinessLogic.Services
             : base(dataContext)
         {
         }
-
     }
 
     public interface IDataService : IService<Data>
     {
-
     }
 }

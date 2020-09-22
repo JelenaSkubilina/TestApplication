@@ -17,12 +17,12 @@ namespace WebSite.Core.Helpers
             this.accessKey = accessKey;
         }
 
-        public string UploadFileToBlob(IFormFile file)
+        public string UploadFileToBlob(IFormFile file, string maxHeight = null, string maxWidth = null)
         {
             try
             {
 
-                var _task = Task.Run(() => this.UploadFileToBlobAsync(file));
+                var _task = Task.Run(() => this.UploadFileToBlobAsync(file, maxHeight, maxWidth));
                 _task.Wait();
                 string fileUrl = _task.Result;
                 return fileUrl;
@@ -54,7 +54,7 @@ namespace WebSite.Core.Helpers
             return cloudBlobContainer;
         }
 
-        private async Task<string> UploadFileToBlobAsync(IFormFile file)
+        private async Task<string> UploadFileToBlobAsync(IFormFile file, string maxHeight = null, string maxWidth = null)
         {
             try
             {
@@ -77,25 +77,10 @@ namespace WebSite.Core.Helpers
 
                 if (file.ContentType.Length > 0 && file.ContentType.Contains("image"))
                 {
-                    //var image = new MagickImage(file.OpenReadStream());
-                    //if(image.Width < 100 || image.Height < 100)
-                    //{
-                    //    return 
-                    //}
+                    int maxWidthConfig = int.Parse(maxWidth);
+                    int maxHeightConfig = int.Parse(maxHeight);
 
-                    //if (image.Width > 200 || image.Height > 200)
-                    //{
-                    //    var size = new MagickGeometry(200, 200);
-
-                    //    image.Resize(size);
-
-                    //    var fileInfo = new FileInfo(file.FileName);
-
-                    //    image.Write(fileInfo);
-                    //}
-
-                    //await cloudBlockBlob.UploadFromFileAsync(fileInfo.Name);
-                     await cloudBlockBlob.UploadFromFileAsync(ResizeImage(file).FullName);
+                    await cloudBlockBlob.UploadFromFileAsync(ResizeImage(file, maxHeightConfig, maxWidthConfig).FullName);
                 }
                 else
                     await cloudBlockBlob.UploadFromStreamAsync(file.OpenReadStream());
@@ -108,11 +93,11 @@ namespace WebSite.Core.Helpers
             }
         }
 
-        private FileInfo ResizeImage(IFormFile file)
+        private FileInfo ResizeImage(IFormFile file, int maxHeight, int maxWidth)
         {
             var image = new MagickImage(file.OpenReadStream());
 
-            var size = new MagickGeometry(200, 200);
+            var size = new MagickGeometry(maxWidth, maxHeight);
 
             image.Resize(size);
 

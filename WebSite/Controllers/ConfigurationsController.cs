@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using BusinessLogic.Models;
+﻿using BusinessLogic.Models;
 using BusinessLogic.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
 using System.Linq;
 using WebSite.Models;
 
@@ -129,7 +127,7 @@ namespace WebSite.Controllers
         {
             var configuration = configurationsService.GetById(id);
 
-            configurationsService.Delete(configuration);//delete from cashe
+            configurationsService.Delete(configuration);
 
             return RedirectToAction(nameof(Index));
         }

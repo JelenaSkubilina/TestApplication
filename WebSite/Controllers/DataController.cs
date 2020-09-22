@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models;
+using BusinessLogic.Models.ValidationAttributes;
 using BusinessLogic.Services;
 using ImageMagick;
 using Microsoft.AspNetCore.Authorization;
@@ -21,18 +22,21 @@ namespace WebSite.Controllers
         private readonly IDataService dataService;
         private readonly IMapper mapper;
         private readonly IConfiguration configuration;
+        private readonly IConfigurationsService configurationsService;
 
         public const int DEFAULT_PAGE_SIZE = 4;
 
         public DataController(IWebHostEnvironment hostingEnvironment,
             IDataService dataService,
             IConfiguration configuration,
-            IMapper mapper)
+            IMapper mapper,
+            IConfigurationsService configurationsService)
         {
             this.hostingEnvironment = hostingEnvironment;
             this.dataService = dataService;
             this.configuration = configuration;
             this.mapper = mapper;
+            this.configurationsService = configurationsService;
         }
 
         public IActionResult Index()
@@ -102,6 +106,7 @@ namespace WebSite.Controllers
             return View(model);
         }
 
+
         public IActionResult Create()
         {
             return View();
@@ -113,8 +118,6 @@ namespace WebSite.Controllers
         {
             if (!ModelState.IsValid)
                 return View(data);
-
-           // var uploadedFile = 
 
             var newData = new Data()
             {
@@ -130,28 +133,6 @@ namespace WebSite.Controllers
 
         private string UploadFile(IFormFile file)
         {
-            if (file.ContentType.Length > 0 && file.ContentType.Contains("image"))
-            {
-                var image = new MagickImage(file.OpenReadStream());
-                if (image.Width < 100 || image.Height < 100)
-                {
-                    //return
-                    }
-
-                if (image.Width > 200 || image.Height > 200)
-                {
-                    var size = new MagickGeometry(200, 200);
-
-                    image.Resize(size);
-
-                    var fileInfo = new FileInfo(file.FileName);
-
-                    image.Write(fileInfo);
-                }
-
-                //await cloudBlockBlob.UploadFromFileAsync(fileInfo.Name);
-                // await cloudBlockBlob.UploadFromFileAsync(ResizeImage(file).FullName);
-            }
             var uploads = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
             bool exists = Directory.Exists(uploads);
 
@@ -159,6 +140,15 @@ namespace WebSite.Controllers
                 Directory.CreateDirectory(uploads);
 
             var blobStorageService = new BlobStorageService(configuration["BlobConnections:AccessKey"]);
+
+            if (file.ContentType.Length <= 0 || !file.ContentType.Contains("image"))
+                return blobStorageService.UploadFileToBlob(file);
+
+            var maxHeight = configurationsService.GetAll().FirstOrDefault(c => c.ConfigurationTypeId == (int)BusinessLogic.Helper.Constants.ConfigurationType.MaxImgHeight);
+            var maxWidth = configurationsService.GetAll().FirstOrDefault(c => c.ConfigurationTypeId == (int)BusinessLogic.Helper.Constants.ConfigurationType.MaxImgWidth);
+
+            if (maxHeight != null && maxWidth != null)
+                return blobStorageService.UploadFileToBlob(file, maxHeight.Value, maxWidth.Value);
 
             return blobStorageService.UploadFileToBlob(file);
         }

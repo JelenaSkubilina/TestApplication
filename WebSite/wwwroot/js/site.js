@@ -5,7 +5,7 @@
     var loading = false;
 
     function initScrollLoading() {
-        var footerHeight = 100;
+        var footerHeight = 10;
 
         $(window).scroll(function () {
             if (($(window).scrollTop() + $(window).height()) >= ($(document).height() - footerHeight) && !loading && !allRecordAreLoaded) {
@@ -32,7 +32,7 @@
                 if (response) {
                     if (!response.datas.length) {
                         $loader.text('No results');
-                        $loader.show();
+           //             $loader.show();
                         return;
                     }
 

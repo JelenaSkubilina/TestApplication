@@ -96,8 +96,6 @@ C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\bin\Debug\netcoreapp3.0\
 C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\bin\Debug\netcoreapp3.0\runtimes\win-x86\native\Magick.Native-Q16-x86.dll
 C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\bin\Debug\netcoreapp3.0\AutoMapper.dll
 C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\obj\Debug\netcoreapp3.0\WebSite.csproj.CoreCompileInputs.cache
-C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\obj\Debug\netcoreapp3.0\WebSite.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Samsung\Source\Repos\TestApplication\WebSite\bin\Debug\netcoreapp3.0\appsettings.Development.json
 C:\Users\Samsung\Source\Repos\TestApplication\WebSite\bin\Debug\netcoreapp3.0\appsettings.json
 C:\Users\Samsung\Source\Repos\TestApplication\WebSite\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
@@ -204,3 +202,7 @@ C:\Users\Samsung\Source\Repos\TestApplication\WebSite\obj\Debug\netcoreapp3.0\Ra
 C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\obj\Debug\netcoreapp3.0\Razor\Views\Configurations\Add.cshtml.g.cs
 C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\obj\Debug\netcoreapp3.0\Razor\Views\Configurations\Delete.cshtml.g.cs
 C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\obj\Debug\netcoreapp3.0\Razor\Views\Configurations\Edit.cshtml.g.cs
+C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\bin\Debug\netcoreapp3.0\System.IO.Pipelines.dll
+C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\obj\Debug\netcoreapp3.0\WebSite.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\TestApplication\WebSite\obj\Debug\netcoreapp3.0\WebSite.MvcApplicationPartsAssemblyInfo.cache

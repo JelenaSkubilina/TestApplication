@@ -5,7 +5,6 @@ C:\Users\Admin\Documents\GitHub\TestApplication\BusinessLogic\bin\Debug\netcorea
 C:\Users\Admin\Documents\GitHub\TestApplication\BusinessLogic\bin\Debug\netcoreapp3.0\BusinessLogic.pdb
 C:\Users\Admin\Documents\GitHub\TestApplication\BusinessLogic\obj\Debug\netcoreapp3.0\BusinessLogic.AssemblyInfoInputs.cache
 C:\Users\Admin\Documents\GitHub\TestApplication\BusinessLogic\obj\Debug\netcoreapp3.0\BusinessLogic.AssemblyInfo.cs
-C:\Users\Admin\Documents\GitHub\TestApplication\BusinessLogic\obj\Debug\netcoreapp3.0\BusinessLogic.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Documents\GitHub\TestApplication\BusinessLogic\obj\Debug\netcoreapp3.0\BusinessLogic.dll
 C:\Users\Admin\Documents\GitHub\TestApplication\BusinessLogic\obj\Debug\netcoreapp3.0\BusinessLogic.pdb
 C:\Users\Admin\Documents\GitHub\TestApplication\BusinessLogic\obj\Debug\netcoreapp3.0\BusinessLogic.genruntimeconfig.cache
@@ -22,3 +21,4 @@ C:\Users\Samsung\Source\Repos\TestApplication\BusinessLogic\obj\Debug\netcoreapp
 C:\Users\Samsung\Source\Repos\TestApplication\BusinessLogic\obj\Debug\netcoreapp3.0\BusinessLogic.dll
 C:\Users\Samsung\Source\Repos\TestApplication\BusinessLogic\obj\Debug\netcoreapp3.0\BusinessLogic.pdb
 C:\Users\Samsung\Source\Repos\TestApplication\BusinessLogic\obj\Debug\netcoreapp3.0\BusinessLogic.genruntimeconfig.cache
+C:\Users\Admin\Documents\GitHub\TestApplication\BusinessLogic\obj\Debug\netcoreapp3.0\BusinessLogic.csproj.CoreCompileInputs.cache

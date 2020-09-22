@@ -11,6 +11,5 @@ namespace BusinessLogic.Models
         {
             Configurations = new List<Configuration>();
         }
-
     }
 }

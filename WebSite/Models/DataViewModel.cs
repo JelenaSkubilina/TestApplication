@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BusinessLogic.Models.ValidationAttributes;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebSite.Models
 {
@@ -12,6 +15,7 @@ namespace WebSite.Models
 
         public string DataUrl { get; set; }
 
+        [AllowedExtension(ErrorMessage = "Invalid File")]       
         public IFormFile File { get; set; }
     }
 }
